@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<class>
+    <film id="1">
+        <name>Halloween</name>
+        <style>horror</style>
+        <dateOfRelease>2013</dateOfRelease>
+        <producer>Rob Cowan</producer>
+    </film>
+
+    <film id="2">
+        <name>Paternoster</name>
+        <style>horror</style>
+        <dateOfRelease>s</dateOfRelease>
+        <producer>qffq</producer>
+    </film>
+
+    <film id="3">
+        <name>It</name>
+        <style>horror</style>
+        <dateOfRelease>1990</dateOfRelease>
+        <producer>Tommy Lee Wallace</producer>
+    </film>
+
+    <film id="4">
+        <name>a</name>
+        <style>q</style>
+        <dateOfRelease>j</dateOfRelease>
+        <producer>q</producer>
+    </film>
+
+
+
+
+</class>
