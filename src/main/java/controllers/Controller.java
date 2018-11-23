@@ -10,14 +10,8 @@ import javax.swing.JTextField;
 
 
 public class Controller implements ActionListener {
-    private JTextField searchTermTextField = new JTextField(26);
-    private Model model;
 
-    public Controller(JTextField searchTermTextField, Model model) {
-        super();
-        this.searchTermTextField = searchTermTextField;
-        this.model = model;
-    }
+    private Model model;
 
     public Controller(Model model) {
         this.model = model;

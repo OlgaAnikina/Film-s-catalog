@@ -6,7 +6,7 @@ public class Film {
     String producer;
     String dateOfRelease;
     String style;
-    Boolean state;
+    Boolean rank;
 
     public Film() {
     }
@@ -17,7 +17,7 @@ public class Film {
         this.id = id;
         this.name = name;
         this.producer = producer;
-        this.state = true;
+        this.rank = true;
     }
 
     public String getId() {
@@ -60,11 +60,11 @@ public class Film {
         this.style = style;
     }
 
-    public Boolean getState() {
-        return state;
+    public Boolean getRank() {
+        return rank;
     }
 
-    public void setState(Boolean state) {
-        this.state = state;
+    public void setRank(Boolean rank) {
+        this.rank = rank;
     }
 }

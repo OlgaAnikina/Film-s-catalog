@@ -85,35 +85,31 @@ public class Parser {
         }
     }
 
-    public void addNewBook() throws TransformerFactoryConfigurationError, DOMException {
+    public void addNewBook(Film newFilm) throws TransformerFactoryConfigurationError, DOMException {
+        int id = films.size() + 1;
+        String result = "" + id;
         Node root = document.getDocumentElement();
 
         Element film = document.createElement("film");
+        film.setAttribute("id", "" + films.size());
 
         Element name = document.createElement("name");
-        name.setTextContent("Java");
-
-        Element producer = document.createElement("producer");
-        producer.setTextContent("Saburov Anton");
+        name.setTextContent(newFilm.getName());
 
         Element style = document.createElement("style");
-        style.setTextContent("style");
+        style.setTextContent(newFilm.getStyle());
 
         Element dateOfRelease = document.createElement("dateOfRelease");
-        dateOfRelease.setTextContent("2015");
+        dateOfRelease.setTextContent(newFilm.getDateOfRelease());
 
-        Element cost = document.createElement("id");
-        cost.setTextContent("5");
-
-        cost.setAttribute("id", "6");
-
+        Element producer = document.createElement("producer");
+        producer.setTextContent(newFilm.getProducer());
 
         film.appendChild(name);
-        film.appendChild(producer);
+        film.appendChild(style);
         film.appendChild(dateOfRelease);
+        film.appendChild(producer);
 
-
-        film.appendChild(cost);
         root.appendChild(film);
 
 

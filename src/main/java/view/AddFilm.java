@@ -26,19 +26,11 @@ public class AddFilm extends JDialog {
         ctrlPane.add(rank);
         JButton add = new JButton("Add");
         JButton cancel = new JButton("Cancel");
+        add.setEnabled(false);
 
         JPanel grid = new JPanel(new GridLayout(1, 2, 5, 0));
         grid.add(add);
         grid.add(cancel);
-
-        //  Controller controller = new Controller(model);
-        // add.addActionListener(controller);
-        add.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controller.addFilm(namefilm, style, dateOfRelease, producer);
-            }
-        });
 
         JPanel flow = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         flow.add(grid);
@@ -56,6 +48,27 @@ public class AddFilm extends JDialog {
         frame.setVisible(true);
 
 
+        add.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (isEmpty(namefilm, style)){add.setEnabled(true);}
+
+                controller.addFilm(namefilm, style, dateOfRelease, producer);
+                frame.setVisible(false);
+            }
+        });
+
+        cancel.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                frame.setVisible(false);
+            }
+        });
+    }
+
+    private boolean isEmpty (JTextField name, JTextField style ){
+        if (name.getText().equals("") || style.getText().equals("")) return false;
+        else return true;
     }
 
 

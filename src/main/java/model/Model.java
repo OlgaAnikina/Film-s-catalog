@@ -23,10 +23,12 @@ public class Model extends DefaultTableModel {
         return this.tableModel;
     }
 
-    public Model() {}
+    public Model() {
+    }
 
-    public void addFilm(JTextField namefilm, JTextField style, JTextField dataOfRelease, JTextField producer) {
-        Film film = new Film("3", namefilm.toString(), style.toString(), dateOfRelease.toString(), producer.toString());
+    public void addFilm(JTextField nameFilm, JTextField style, JTextField dataofRelease, JTextField produc) {
+        int id =tableModel.getRowCount() + 1;
+        Film film = new Film("" + id, nameFilm.getText(), style.getText(), dataofRelease.getText(), produc.getText());
         tableModel.addRow(film);
     }
 

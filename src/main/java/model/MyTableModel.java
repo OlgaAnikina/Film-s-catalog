@@ -4,6 +4,7 @@ import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class MyTableModel extends AbstractTableModel {
+    Parser parser = new Parser();
     private String[] columnNames = {"ID", "Film's name", "Producer",
             "Year", "Style", "Rank"};
     ArrayList<Film> list = null;
@@ -26,6 +27,7 @@ public class MyTableModel extends AbstractTableModel {
     public int getRowCount() {
         return list.size();
     }
+
     public void addRow(Film film) {
         this.list.add(film);
         for(int i = 0; i < this.getRowCount(); i++) {
@@ -33,6 +35,7 @@ public class MyTableModel extends AbstractTableModel {
                 fireTableCellUpdated(i, j);
             }
         }
+        parser.addNewBook(film);
 
     }
 
@@ -79,7 +82,7 @@ public class MyTableModel extends AbstractTableModel {
 
         switch (col) {
             case 0:
-                // id not editable  list.get(row).setId((int)value);
+                // maybe id;
             case 1:
                 list.get(row).setName((String) value);
                 break;
