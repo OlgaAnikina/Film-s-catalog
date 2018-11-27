@@ -1,12 +1,8 @@
 package model;
 
-
 import javax.swing.*;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
-import java.awt.*;
 import java.util.ArrayList;
-
 
 public class Model extends DefaultTableModel {
     MyTableModel tableModel = new MyTableModel();
@@ -36,14 +32,33 @@ public class Model extends DefaultTableModel {
     public ArrayList<Film> searchFilm(JTextField value) {
         ArrayList<Film> result = new ArrayList<>();
         ArrayList<Film> currentData = getData();
-        for(Film film: currentData ) {
-            if(film.getRank().equals(value.getText()))
+        for (Film film : currentData) {
+            if (film.getRank().equals(value.getText())) {
                 result.add(film);
+                continue;
+            }
+            if (film.getName().equals(value.getText())) {
+                result.add(film);
+                continue;
+            }
+            if (film.getDateOfRelease().equals(value.getText())) {
+                result.add(film);
+                continue;
+            }
+            if (film.getProducer().equals(value.getText())) {
+                result.add(film);
+                continue;
+            }
+            if (film.getStyle().equals(value.getText())) {
+                result.add(film);
+                continue;
+            }
+
         }
         return result;
     }
 
-    public ArrayList<Film> getData(){
+    public ArrayList<Film> getData() {
         return (ArrayList<Film>) readXMLFile.getFilms();
     }
 
@@ -56,7 +71,6 @@ public class Model extends DefaultTableModel {
     public void refreshTableModel() {
         tableModel.updateTable(getData());
     }
-
 
 
 }

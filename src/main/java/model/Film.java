@@ -70,7 +70,7 @@ public class Film implements Comparable {
 
     @Override
     public int compareTo(Object o) {
-        if(!(o instanceof Film))
+        if (!(o instanceof Film))
             return 0;
         Integer obId = Integer.parseInt(((Film) o).getId());
         Integer thisId = Integer.parseInt(this.getId());

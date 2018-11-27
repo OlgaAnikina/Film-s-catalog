@@ -10,7 +10,7 @@ import javax.swing.JTextField;
 import javax.swing.table.TableModel;
 
 
-public class Controller {//implements ActionListener {
+public class Controller {
 
     private Model model;
     private JTextField searchField;
@@ -26,16 +26,16 @@ public class Controller {//implements ActionListener {
         model.addFilm(nameFilm.getText(), style.getText(), dataOfRelease.getText(), producer.getText(), rank.getText());
     }
 
-     public void search(JTextField value) {
+    public void search(JTextField value) {
         ArrayList<Film> films = model.searchFilm(value);
         model.getTableModel().updateTable(films);
-     }
+    }
 
     public TableModel getTableModel() {
         return model.getTableModel();
     }
 
-    public void refreshTableModel(){
+    public void refreshTableModel() {
         model.refreshTableModel();
     }
 

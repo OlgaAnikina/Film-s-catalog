@@ -20,13 +20,11 @@ import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
 public class DataAdapter {
-
- //   private static String path = "C:\\GIT\\films_ui\\src\\main\\resources\\sourse.xml";
-   private static String path = "src\\main\\resources\\sourse.xml";
+    private static String path = "sourse.xml";
     private Document document;
 
     public List<Film> getFilms() {
-       return this.read();
+        return this.read();
     }
 
     public DataAdapter() {
@@ -51,7 +49,6 @@ public class DataAdapter {
             this.document = doc;
 
             this.document.getDocumentElement().normalize();
-            System.out.println("Root element :" + this.document.getDocumentElement().getNodeName());
             NodeList nList = this.document.getElementsByTagName("film");
             for (int tmp = 0; tmp < nList.getLength(); tmp++) {
                 Node nNode = nList.item(tmp);
@@ -110,8 +107,6 @@ public class DataAdapter {
     }
 
 
-
-
     private static void writeDocument(Document document) throws TransformerFactoryConfigurationError {
         try {
             Transformer tr = TransformerFactory.newInstance().newTransformer();
@@ -127,12 +122,11 @@ public class DataAdapter {
     public void removeData(Film film) {
         Node root = document.getDocumentElement();
         NodeList list = document.getElementsByTagName("film");
-        for(int i = 0; i < list.getLength(); i++) {
+        for (int i = 0; i < list.getLength(); i++) {
             Node node = list.item(i);
-            if(node.getNodeType() == Node.ELEMENT_NODE )
-            {
+            if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;
-                if(element.getAttribute("id").equals(film.getId()))
+                if (element.getAttribute("id").equals(film.getId()))
                     root.removeChild(node);
             }
         }

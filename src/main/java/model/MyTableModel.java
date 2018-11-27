@@ -30,8 +30,8 @@ public class MyTableModel extends AbstractTableModel {
 
     public void addRow(Film film) {
         this.list.add(film);
-        for(int i = 0; i < this.getRowCount(); i++) {
-            for (int j = 0; j < this.getColumnCount() ; j++) {
+        for (int i = 0; i < this.getRowCount(); i++) {
+            for (int j = 0; j < this.getColumnCount(); j++) {
                 fireTableCellUpdated(i, j);
             }
         }
@@ -39,7 +39,7 @@ public class MyTableModel extends AbstractTableModel {
 
     }
 
-    public void updateTable(ArrayList<Film> films){
+    public void updateTable(ArrayList<Film> films) {
         list.clear();
         list.addAll(films);
         fireTableDataChanged();
@@ -114,12 +114,11 @@ public class MyTableModel extends AbstractTableModel {
 
     public String getRow(int row) {
         String result = "";
-        for (int i = 0; i < this.getColumnCount() -1; i++) {
+        for (int i = 0; i < this.getColumnCount() - 1; i++) {
             result += this.getValueAt(row, i).toString();
         }
         return result;
     }
-
 
 
 }

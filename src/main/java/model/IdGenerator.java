@@ -9,7 +9,7 @@ public class IdGenerator {
         this.parser = parser;
     }
 
-    int getId(){
+    int getId() {
         List<Film> films = parser.getFilms();
         return Integer.parseInt(films.stream().max(Film::compareTo).orElse(null).getId()) + 1;
     }
