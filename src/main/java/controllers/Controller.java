@@ -31,8 +31,9 @@ public class Controller implements ActionListener {
                 JOptionPane.ERROR_MESSAGE);
     }
 
-    public void addFilm(JTextField nameFilm, JTextField style, JTextField dataOfRelease, JTextField producer) {
-        model.addFilm(nameFilm, style, dataOfRelease, producer);
+    public void addFilm(JTextField nameFilm, JTextField style,
+                        JTextField dataOfRelease, JTextField producer, JTextField rank) {
+        model.addFilm(nameFilm, style, dataOfRelease, producer, rank);
     }
 
 

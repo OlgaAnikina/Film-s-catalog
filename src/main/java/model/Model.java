@@ -26,9 +26,11 @@ public class Model extends DefaultTableModel {
     public Model() {
     }
 
-    public void addFilm(JTextField nameFilm, JTextField style, JTextField dataofRelease, JTextField produc) {
+    public void addFilm(JTextField nameFilm, JTextField style,
+                        JTextField dataofRelease, JTextField produc, JTextField ranks) {
         int id =tableModel.getRowCount() + 1;
-        Film film = new Film("" + id, nameFilm.getText(), style.getText(), dataofRelease.getText(), produc.getText());
+        Film film = new Film("" + id, nameFilm.getText(),
+                style.getText(), dataofRelease.getText(), produc.getText(), ranks.getText());
         tableModel.addRow(film);
     }
 

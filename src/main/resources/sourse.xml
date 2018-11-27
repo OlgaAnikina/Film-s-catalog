@@ -4,6 +4,7 @@
         <style>horror</style>
         <dateOfRelease>2013</dateOfRelease>
         <producer>Rob Cowan</producer>
+        <rank>9</rank>
     </film>
 
     <film id="2">
@@ -11,6 +12,7 @@
         <style>horror</style>
         <dateOfRelease>2000</dateOfRelease>
         <producer>Carl</producer>
+        <rank>1</rank>
     </film>
 
     <film id="3">
@@ -18,13 +20,15 @@
         <style>horror</style>
         <dateOfRelease>1990</dateOfRelease>
         <producer>Tommy Lee Wallace</producer>
+        <rank>7</rank>
     </film>
 
     <film id="4">
         <name>a</name>
         <style>q</style>
-        <dateOfRelease>j</dateOfRelease>
+        <dateOfRelease>1998</dateOfRelease>
         <producer>q</producer>
+        <rank>2</rank>
     </film>
 
     <film id="5">
@@ -32,12 +36,16 @@
         <style>comedia</style>
         <dateOfRelease>2015</dateOfRelease>
         <producer>Anton</producer>
+        <rank>7</rank>
     </film>
 
     <film id="6">
         <name>q</name>
         <style>e</style>
-        <dateOfRelease>r</dateOfRelease>
+        <dateOfRelease>1950</dateOfRelease>
         <producer>w</producer>
+        <rank>2</rank>
     </film>
-<film id="7"><name>q</name><style>r</style><dateOfRelease>e</dateOfRelease><producer>w</producer></film><film id="8"><name>a</name><style/><dateOfRelease/><producer/></film><film id="9"><name>f</name><style/><dateOfRelease/><producer/></film><film id="10"><name>5k</name><style/><dateOfRelease/><producer/></film><film id="11"><name>kk</name><style/><dateOfRelease/><producer/></film></class>
+
+
+</class>

@@ -6,18 +6,18 @@ public class Film {
     String producer;
     String dateOfRelease;
     String style;
-    Boolean rank;
+    String rank;
 
     public Film() {
     }
 
-    public Film(String id, String name, String producer, String dateOfRelease, String style) {
+    public Film(String id, String name, String producer, String dateOfRelease, String style, String rank) {
         this.dateOfRelease = dateOfRelease;
         this.style = style;
         this.id = id;
         this.name = name;
         this.producer = producer;
-        this.rank = true;
+        this.rank = rank;
     }
 
     public String getId() {
@@ -60,11 +60,11 @@ public class Film {
         this.style = style;
     }
 
-    public Boolean getRank() {
+    public String getRank() {
         return rank;
     }
 
-    public void setRank(Boolean rank) {
+    public void setRank(String rank) {
         this.rank = rank;
     }
 }

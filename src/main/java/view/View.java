@@ -3,7 +3,7 @@ package view;
 import controllers.Controller;
 import model.Film;
 import model.Model;
-import model.MyTableModel;
+
 import model.Parser;
 
 import java.awt.Dimension;
@@ -26,25 +26,13 @@ public class View {
 
     public View() {
 
-
-        // Create views swing UI components
         JTextField searchTermTextField = new JTextField(26);
         JButton filterButton = new JButton("Filter");
         JButton addButton = new JButton("Add film");
-
-
         Parser readXMLFile = new Parser();
 
-
-
-
-
         ArrayList<Film> list = (ArrayList<Film>) readXMLFile.getFilms();
-        // Create table model
         Model model = new Model(list);
-
-
-
 
         JTable table = new JTable(model.getTableModel());
         table.setPreferredScrollableViewportSize(new Dimension(200, 200));
@@ -52,24 +40,18 @@ public class View {
 
         JScrollPane scrollPane = new JScrollPane(table);
 
-
-
-        //table.setModel(model);
         table.setModel(model.getTableModel());
-
 
         Controller controller = new Controller(model);
         filterButton.addActionListener(controller);
-        //addButton.addActionListener(controller);
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                // controller.addFilm(e);
+
                 AddFilm addFilm = new AddFilm(controller);
             }
 
         });
-
 
         JPanel ctrlPane = new JPanel();
         ctrlPane.add(searchTermTextField);
@@ -77,18 +59,14 @@ public class View {
         ctrlPane.add(addButton);
 
 
-        //  JScrollPane tableScrollPane = new JScrollPane(table);
         scrollPane.setPreferredSize(new Dimension(700, 250));
 
         scrollPane.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(),
                 "All films", TitledBorder.CENTER, TitledBorder.TOP));
 
-
-
         JSplitPane splitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, scrollPane, ctrlPane);
         splitPane.setDividerLocation(250);
         splitPane.setEnabled(false);
-
 
 
         JFrame frame = new JFrame("Catalog of films");

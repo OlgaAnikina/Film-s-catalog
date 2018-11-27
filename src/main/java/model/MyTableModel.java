@@ -58,6 +58,8 @@ public class MyTableModel extends AbstractTableModel {
                 return object.dateOfRelease;
             case 4:
                 return object.style;
+            case 5:
+                return object.rank;
             default:
                 return "unknown";
         }
@@ -69,7 +71,7 @@ public class MyTableModel extends AbstractTableModel {
     }
 
     boolean[] canEdit = new boolean[]{
-            false, false, true, false, true,
+            false, false, true, false, true, true
     };
 
     @Override
@@ -94,6 +96,9 @@ public class MyTableModel extends AbstractTableModel {
                 break;
             case 4:
                 list.get(row).setStyle((String) value);
+                break;
+            case 5:
+                list.get(row).setRank((String) value);
                 break;
 
         }

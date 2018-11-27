@@ -22,7 +22,8 @@ import org.xml.sax.SAXException;
 public class Parser {
 
     private static List<Film> films = new ArrayList<>();
-    private static String path = "C:\\GIT\\films_ui\\src\\main\\resources\\sourse.xml";
+ //   private static String path = "C:\\GIT\\films_ui\\src\\main\\resources\\sourse.xml";
+   private static String path = "src\\main\\resources\\sourse.xml";
     private Document document;
 
     public List<Film> getFilms() {
@@ -69,6 +70,7 @@ public class Parser {
                     tempBook.setStyle(eElement.getElementsByTagName("style").item(0).getTextContent());
                     tempBook.setProducer(eElement.getElementsByTagName("producer").item(0).getTextContent());
                     tempBook.setDateOfRelease(eElement.getElementsByTagName("dateOfRelease").item(0).getTextContent());
+                    tempBook.setRank(eElement.getElementsByTagName("rank").item(0).getTextContent());
 
 
                     System.out.println("TEMP : " + tmp);
@@ -76,6 +78,7 @@ public class Parser {
                     System.out.println("name : " + tempBook.getName());
                     System.out.println("producer: " + tempBook.getProducer());
                     System.out.println("dateOfRelease : " + tempBook.getDateOfRelease());
+                    System.out.println("rank : " + tempBook.getRank());
 
                     films.add(tmp, tempBook);
                 }
@@ -105,10 +108,14 @@ public class Parser {
         Element producer = document.createElement("producer");
         producer.setTextContent(newFilm.getProducer());
 
+        Element rank = document.createElement("rank");
+        rank.setTextContent(newFilm.getRank());
+
         film.appendChild(name);
         film.appendChild(style);
         film.appendChild(dateOfRelease);
         film.appendChild(producer);
+        film.appendChild(rank);
 
         root.appendChild(film);
 
