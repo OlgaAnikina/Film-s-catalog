@@ -4,7 +4,7 @@ import javax.swing.table.AbstractTableModel;
 import java.util.ArrayList;
 
 public class MyTableModel extends AbstractTableModel {
-    Parser parser = new Parser();
+    DataAdapter parser = new DataAdapter();
     private String[] columnNames = {"ID", "Film's name", "Producer",
             "Year", "Style", "Rank"};
     ArrayList<Film> list = null;
@@ -39,6 +39,12 @@ public class MyTableModel extends AbstractTableModel {
 
     }
 
+    public void updateTable(ArrayList<Film> films){
+        list.clear();
+        list.addAll(films);
+        fireTableDataChanged();
+    }
+
     public String getColumnName(int col) {
         return columnNames[col];
     }
@@ -71,7 +77,7 @@ public class MyTableModel extends AbstractTableModel {
     }
 
     boolean[] canEdit = new boolean[]{
-            false, false, true, false, true, true
+            false, false, false, false, false, false
     };
 
     @Override
@@ -105,4 +111,15 @@ public class MyTableModel extends AbstractTableModel {
         fireTableCellUpdated(row, col);
 
     }
+
+    public String getRow(int row) {
+        String result = "";
+        for (int i = 0; i < this.getColumnCount() -1; i++) {
+            result += this.getValueAt(row, i).toString();
+        }
+        return result;
+    }
+
+
+
 }

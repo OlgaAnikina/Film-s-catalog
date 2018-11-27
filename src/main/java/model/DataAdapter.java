@@ -19,33 +19,30 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
-public class Parser {
+public class DataAdapter {
 
-    private static List<Film> films = new ArrayList<>();
  //   private static String path = "C:\\GIT\\films_ui\\src\\main\\resources\\sourse.xml";
    private static String path = "src\\main\\resources\\sourse.xml";
     private Document document;
 
     public List<Film> getFilms() {
-        this.read();
-        return films;
+       return this.read();
     }
 
-    public Parser() {
+    public DataAdapter() {
         try {
             File inputFile = new File(path);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(inputFile);
             this.document = doc;
-
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
     }
 
-    private void read() {
-
+    private ArrayList<Film> read() {
+        ArrayList<Film> films = new ArrayList<>();
         try {
             File inputFile = new File(path);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
@@ -58,7 +55,6 @@ public class Parser {
             NodeList nList = this.document.getElementsByTagName("film");
             for (int tmp = 0; tmp < nList.getLength(); tmp++) {
                 Node nNode = nList.item(tmp);
-                System.out.println("\nReading node :" + nNode.getNodeName());
 
                 Film tempBook = new Film();
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -72,29 +68,20 @@ public class Parser {
                     tempBook.setDateOfRelease(eElement.getElementsByTagName("dateOfRelease").item(0).getTextContent());
                     tempBook.setRank(eElement.getElementsByTagName("rank").item(0).getTextContent());
 
-
-                    System.out.println("TEMP : " + tmp);
-                    System.out.println("id : " + tempBook.getId());
-                    System.out.println("name : " + tempBook.getName());
-                    System.out.println("producer: " + tempBook.getProducer());
-                    System.out.println("dateOfRelease : " + tempBook.getDateOfRelease());
-                    System.out.println("rank : " + tempBook.getRank());
-
                     films.add(tmp, tempBook);
                 }
             }
         } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
+        return films;
     }
 
     public void addNewBook(Film newFilm) throws TransformerFactoryConfigurationError, DOMException {
-        int id = films.size() + 1;
-        String result = "" + id;
         Node root = document.getDocumentElement();
 
         Element film = document.createElement("film");
-        film.setAttribute("id", "" + films.size());
+        film.setAttribute("id", "" + newFilm.getId());
 
         Element name = document.createElement("name");
         name.setTextContent(newFilm.getName());
@@ -119,9 +106,10 @@ public class Parser {
 
         root.appendChild(film);
 
-
         writeDocument(document);
     }
+
+
 
 
     private static void writeDocument(Document document) throws TransformerFactoryConfigurationError {
@@ -134,5 +122,20 @@ public class Parser {
         } catch (TransformerException | IOException e) {
             e.printStackTrace(System.out);
         }
+    }
+
+    public void removeData(Film film) {
+        Node root = document.getDocumentElement();
+        NodeList list = document.getElementsByTagName("film");
+        for(int i = 0; i < list.getLength(); i++) {
+            Node node = list.item(i);
+            if(node.getNodeType() == Node.ELEMENT_NODE )
+            {
+                Element element = (Element) node;
+                if(element.getAttribute("id").equals(film.getId()))
+                    root.removeChild(node);
+            }
+        }
+        writeDocument(document);
     }
 }

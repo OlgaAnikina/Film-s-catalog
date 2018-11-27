@@ -1,25 +1,13 @@
 package view;
 
 import controllers.Controller;
-import model.Film;
-import model.Model;
-
-import model.Parser;
 
 import java.awt.Dimension;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JSplitPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.TitledBorder;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 
 public class View {
@@ -29,34 +17,49 @@ public class View {
         JTextField searchTermTextField = new JTextField(26);
         JButton filterButton = new JButton("Filter");
         JButton addButton = new JButton("Add film");
-        Parser readXMLFile = new Parser();
+        JButton deleteButton = new JButton("Remove film");
 
-        ArrayList<Film> list = (ArrayList<Film>) readXMLFile.getFilms();
-        Model model = new Model(list);
+        Controller controller = new Controller(searchTermTextField);
 
-        JTable table = new JTable(model.getTableModel());
+        JTable table = new JTable(controller.getTableModel());
         table.setPreferredScrollableViewportSize(new Dimension(200, 200));
         table.setFillsViewportHeight(true);
 
         JScrollPane scrollPane = new JScrollPane(table);
 
-        table.setModel(model.getTableModel());
+        table.setModel(controller.getTableModel());
 
-        Controller controller = new Controller(model);
-        filterButton.addActionListener(controller);
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 AddFilm addFilm = new AddFilm(controller);
+                controller.refreshTableModel();
             }
 
+        });
+
+        filterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.search(searchTermTextField);
+
+            }
+
+        });
+
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                int selectedRow = table.getSelectedRow();
+                controller.removeData(selectedRow);
+            }
         });
 
         JPanel ctrlPane = new JPanel();
         ctrlPane.add(searchTermTextField);
         ctrlPane.add(filterButton);
         ctrlPane.add(addButton);
+        ctrlPane.add(deleteButton);
 
 
         scrollPane.setPreferredSize(new Dimension(700, 250));

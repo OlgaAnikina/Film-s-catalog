@@ -2,37 +2,62 @@ package model;
 
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import java.awt.*;
 import java.util.ArrayList;
 
 
 public class Model extends DefaultTableModel {
     MyTableModel tableModel = new MyTableModel();
-    Parser parser = new Parser();
-    JTextField namefilm = new JTextField(10);
-    JTextField style = new JTextField(10);
-    JTextField dateOfRelease = new JTextField(10);
-    JTextField producer = new JTextField(10);
-    JTextField rank = new JTextField(10);
+    DataAdapter parser = new DataAdapter();
 
-    public Model(ArrayList<Film> list) {
-        tableModel.init(list);
+    IdGenerator generator = new IdGenerator(parser);
+
+    DataAdapter readXMLFile = new DataAdapter();
+
+    public Model() {
+        tableModel.init(getData());
     }
 
     public MyTableModel getTableModel() {
         return this.tableModel;
     }
 
-    public Model() {
-    }
 
-    public void addFilm(JTextField nameFilm, JTextField style,
-                        JTextField dataofRelease, JTextField produc, JTextField ranks) {
-        int id =tableModel.getRowCount() + 1;
-        Film film = new Film("" + id, nameFilm.getText(),
-                style.getText(), dataofRelease.getText(), produc.getText(), ranks.getText());
+    public void addFilm(String nameFilm, String style,
+                        String dataofRelease, String produc, String ranks) {
+        int id = generator.getId();
+        Film film = new Film("" + id, nameFilm,
+                style, dataofRelease, produc, ranks);
         tableModel.addRow(film);
     }
+
+    public ArrayList<Film> searchFilm(JTextField value) {
+        ArrayList<Film> result = new ArrayList<>();
+        ArrayList<Film> currentData = getData();
+        for(Film film: currentData ) {
+            if(film.getRank().equals(value.getText()))
+                result.add(film);
+        }
+        return result;
+    }
+
+    public ArrayList<Film> getData(){
+        return (ArrayList<Film>) readXMLFile.getFilms();
+    }
+
+    @Override
+    public void removeRow(int i) {
+        Film film = getData().get(i);
+        readXMLFile.removeData(film);
+    }
+
+    public void refreshTableModel() {
+        tableModel.updateTable(getData());
+    }
+
+
 
 }
 

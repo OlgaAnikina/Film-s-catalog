@@ -1,6 +1,6 @@
 package model;
 
-public class Film {
+public class Film implements Comparable {
     String id;
     String name;
     String producer;
@@ -66,5 +66,14 @@ public class Film {
 
     public void setRank(String rank) {
         this.rank = rank;
+    }
+
+    @Override
+    public int compareTo(Object o) {
+        if(!(o instanceof Film))
+            return 0;
+        Integer obId = Integer.parseInt(((Film) o).getId());
+        Integer thisId = Integer.parseInt(this.getId());
+        return thisId.compareTo(obId);
     }
 }
