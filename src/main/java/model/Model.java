@@ -21,11 +21,11 @@ public class Model extends DefaultTableModel {
     }
 
 
-    public void addFilm(String nameFilm, String style,
-                        String dataofRelease, String produc, String ranks) {
+    public void addFilm(String nameFilm, String produc,
+                        String dataofRelease, String style, String ranks) {
         int id = generator.getId();
         Film film = new Film("" + id, nameFilm,
-                style, dataofRelease, produc, ranks);
+                produc, dataofRelease, style, ranks);
         tableModel.addRow(film);
     }
 

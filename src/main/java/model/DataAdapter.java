@@ -83,22 +83,23 @@ public class DataAdapter {
         Element name = document.createElement("name");
         name.setTextContent(newFilm.getName());
 
-        Element style = document.createElement("style");
-        style.setTextContent(newFilm.getStyle());
+        Element producer = document.createElement("producer");
+        producer.setTextContent(newFilm.getProducer());
 
         Element dateOfRelease = document.createElement("dateOfRelease");
         dateOfRelease.setTextContent(newFilm.getDateOfRelease());
 
-        Element producer = document.createElement("producer");
-        producer.setTextContent(newFilm.getProducer());
+        Element style = document.createElement("style");
+        style.setTextContent(newFilm.getStyle());
+
 
         Element rank = document.createElement("rank");
         rank.setTextContent(newFilm.getRank());
 
         film.appendChild(name);
-        film.appendChild(style);
-        film.appendChild(dateOfRelease);
         film.appendChild(producer);
+        film.appendChild(dateOfRelease);
+        film.appendChild(style);
         film.appendChild(rank);
 
         root.appendChild(film);

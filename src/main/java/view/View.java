@@ -16,6 +16,7 @@ public class View {
 
         JTextField searchTermTextField = new JTextField(26);
         JButton filterButton = new JButton("Filter");
+        JButton clearFilterButton = new JButton("Clear filter");
         JButton addButton = new JButton("Add film");
         JButton deleteButton = new JButton("Remove film");
 
@@ -29,35 +30,10 @@ public class View {
 
         table.setModel(controller.getTableModel());
 
-        addButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                AddFilm addFilm = new AddFilm(controller);
-                controller.refreshTableModel();
-            }
-
-        });
-
-        filterButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                controller.search(searchTermTextField);
-
-            }
-
-        });
-
-        deleteButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                int selectedRow = table.getSelectedRow();
-                controller.removeData(selectedRow);
-            }
-        });
-
         JPanel ctrlPane = new JPanel();
         ctrlPane.add(searchTermTextField);
         ctrlPane.add(filterButton);
+        ctrlPane.add(clearFilterButton);
         ctrlPane.add(addButton);
         ctrlPane.add(deleteButton);
 
@@ -78,6 +54,41 @@ public class View {
         frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
+
+
+        addButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                AddFilm addFilm = new AddFilm(controller);
+                controller.refreshTableModel();
+            }
+
+        });
+
+        clearFilterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                controller.refreshTableModel();
+            }
+        });
+
+        filterButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                controller.search(searchTermTextField);
+            }
+
+        });
+
+        deleteButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                int selectedRow = table.getSelectedRow();
+                ConfirmDeletion confirmDeletion = new ConfirmDeletion(frame);
+                confirmDeletion.setRow(selectedRow, controller);
+                confirmDeletion.setVisible(true);
+            }
+        });
     }
 }
 

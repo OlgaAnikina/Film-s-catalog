@@ -21,9 +21,11 @@ public class Controller {
     }
 
 
-    public void addFilm(JTextField nameFilm, JTextField style,
-                        JTextField dataOfRelease, JTextField producer, JTextField rank) {
-        model.addFilm(nameFilm.getText(), style.getText(), dataOfRelease.getText(), producer.getText(), rank.getText());
+
+
+    public void addFilm(JTextField nameFilm,JTextField producer ,
+                        JTextField dataOfRelease, String style, String rank) {
+        model.addFilm(nameFilm.getText(), producer.getText(), dataOfRelease.getText(), style, rank);
     }
 
     public void search(JTextField value) {

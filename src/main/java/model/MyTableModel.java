@@ -77,7 +77,7 @@ public class MyTableModel extends AbstractTableModel {
     }
 
     boolean[] canEdit = new boolean[]{
-            false, false, false, false, false, false
+            true, true, true, true, true, true
     };
 
     @Override

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?><class>
     <film id="1">
         <name>Halloween</name>
-        <style>horror</style>
+        <style>Horror</style>
         <dateOfRelease>2013</dateOfRelease>
         <producer>Rob Cowan</producer>
         <rank>9</rank>
@@ -9,7 +9,7 @@
 
     <film id="2">
         <name>Paternoster</name>
-        <style>horror</style>
+        <style>Horror</style>
         <dateOfRelease>2000</dateOfRelease>
         <producer>Carl</producer>
         <rank>1</rank>
@@ -17,35 +17,27 @@
 
     <film id="3">
         <name>It</name>
-        <style>horror</style>
+        <style>Horror</style>
         <dateOfRelease>1990</dateOfRelease>
         <producer>Tommy Lee Wallace</producer>
         <rank>7</rank>
     </film>
 
     <film id="4">
-        <name>a</name>
-        <style>q</style>
-        <dateOfRelease>1998</dateOfRelease>
-        <producer>q</producer>
-        <rank>2</rank>
+        <name>Sun</name>
+        <style>Horror</style>
+        <dateOfRelease>1996</dateOfRelease>
+        <producer>Tommy</producer>
+        <rank>65</rank>
     </film>
 
-    <film id="5">
-        <name>Java</name>
-        <style>comedia</style>
-        <dateOfRelease>2015</dateOfRelease>
-        <producer>Anton</producer>
-        <rank>7</rank>
-    </film>
+    
 
-    <film id="6">
-        <name>q</name>
-        <style>e</style>
-        <dateOfRelease>1950</dateOfRelease>
-        <producer>w</producer>
-        <rank>2</rank>
-    </film>
+    
+
+    
 
 
-<film id="7"><name>2</name><style>2</style><dateOfRelease>2</dateOfRelease><producer>2</producer><rank>2</rank></film></class>
+<film id="6"><name>It</name><producer>Carl</producer><dateOfRelease>1990</dateOfRelease><style>Horror </style><rank>61</rank></film>
+    <film id="5"><name>Love</name><producer>Kill</producer><dateOfRelease>2000</dateOfRelease><style>Romance</style><rank>17</rank></film>
+</class>
